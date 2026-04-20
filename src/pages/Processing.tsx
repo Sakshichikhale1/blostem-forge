@@ -35,12 +35,13 @@ const Processing = () => {
         setActive(STEPS.length - 1);
 
         // API Call to your Python Backend
-        const response = await fetch("https://blostem-forge-frontend.onrender.com/", {
+        // API Call to your REAL Python Backend
+        const response = await fetch("https://blostem-backend-13o9.onrender.com/generate-deal", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ bank_name: decoded }),
         });
-
+        
         if (!response.ok) throw new Error("Forge Engine Offline");
 
         const aiData = await response.json();
